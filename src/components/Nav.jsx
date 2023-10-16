@@ -1,6 +1,11 @@
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
 
-export default function Nav({onSearch}){
+export default function Nav({onSearch, logout}){
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
     return(
         <nav
@@ -17,9 +22,9 @@ export default function Nav({onSearch}){
         "
       >
        <div>
-          <a href="#">
-            <img className="w-48" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"></img>
-          </a>
+          <Link to="/home">
+            <img className="w-48 " src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"></img>
+          </Link>
         </div>
        
          <svg
@@ -41,15 +46,22 @@ export default function Nav({onSearch}){
        <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
           <ul
             class="
-              pt-4
+              pt-4 
               text-base text-gray-700
               md:flex
               md:justify-between 
               md:pt-0"
           >
             <li>
-              <a class="md:p-4 py-2 block hover:text-purple-400" href="#"
-                >Home</a>
+              <button class="md:p-4 py-2 block hover:text-green-400" href="#"
+                onClick={()=> onSearch(getRandomInt(826))}>Random</button>
+            </li>
+            <li>
+              <button class="md:p-4 py-2 block hover:text-green-400" href="#"
+                onClick={() => logout()}>Log Out</button>
+            </li>
+            <li>
+              <Link class="md:p-4 py-2 block hover:text-green-400 " to="/about">About</Link>
             </li>
       
             <li>

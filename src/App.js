@@ -2,6 +2,12 @@ import './App.css'
 import Cards from './components/Cards.jsx'
 import { useEffect, useState } from 'react'
 import Nav from './components/Nav'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import About from './components/About'
+import Detail from './components/Detail'
+import NotFound from './components/404'
+import Form from './components/Form'
+import ParticlesComponent from './components/Particles'
 
 function App () {
   const [characters, setCharacters] = useState([])
@@ -14,30 +20,71 @@ function App () {
  };*/}
 
  function onSearch(character){
-  fetch(`https://rickandmortyapi.com/api/character/${character}`)
-      .then((response) => response.json())
-      .then((data) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('No hay personajes con ese ID');
-         }
-      });
+  let present= characters.find(char => char.id == character)
+  if(present){
+    window.alert('Personaje Repetido');
+  }  else{
+
+    fetch(`https://rickandmortyapi.com/api/character/${character}`)
+        .then((response) => response.json())
+        .then((data) => {
+           if (data.name) {
+              setCharacters((oldChars) => [...oldChars, data]);
+           } else {
+              window.alert('No hay personajes con ese ID');
+           }
+        });
+  }
  }
+
+ function onClose(id){
+  setCharacters(characters.filter(char => char.id !== id))
+ }
+const location = useLocation();
+const navigate = useNavigate();
+const [access, setAccess] = useState(false);
+const email = 'ejemplo@gmail.com';
+const password = '1password';
+
+
+function logout() {
   
-  return (
-    
+     setAccess(false);
+     navigate('/');
+}
+function login(userData) {
+   if (userData.password === password && userData.email === email) {
+      setAccess(true);
+      navigate('/home');
+   }
+}
+
+useEffect(() => {
+   !access && navigate('/');
+}, [access]);
+
+  
+  return (<>
+
+    <ParticlesComponent/>
     <div className='App'>
-    <Nav onSearch={onSearch}></Nav>
+    {location.pathname !=='/'  && <Nav onSearch = {onSearch} logout ={logout}/>}
       <hr />
       <div>
-        <Cards
+      <Routes>
+      <Route path='/home' element={<Cards
           characters={characters}
-          onClose={() => window.alert('Emulamos que se cierra la card')}
-        />
+          onClose={onClose}
+        />}> </Route>
+      <Route path="/about" element={<About/>}></Route>
+      <Route path='/detail/:detailId' element={<Detail/>}></Route>
+       <Route path="/" element={<Form login={login}></Form>}></Route>
+       <Route path="*" element={<NotFound></NotFound>}></Route>
+      </Routes>
       </div>
-      <hr />
     </div>
+  </>
+    
   )
 }
 
