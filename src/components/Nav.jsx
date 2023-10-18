@@ -8,8 +8,9 @@ export default function Nav({onSearch, logout}){
   }
 
     return(
+
         <nav
-        class="
+        className="
           flex flex-wrap
           items-center
           justify-between
@@ -19,9 +20,10 @@ export default function Nav({onSearch, logout}){
           px-4
           text-lg text-gray-700
           bg-white
+          z-10
         "
       >
-       <div>
+       <div className=" z-auto">
           <Link to="/home">
             <img className="w-48 " src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"></img>
           </Link>
@@ -30,7 +32,7 @@ export default function Nav({onSearch, logout}){
          <svg
             xmlns="http://www.w3.org/2000/svg"
             id="menu-button"
-            class="h-6 w-6 cursor-pointer md:hidden block"
+            className="h-6 w-6 cursor-pointer md:hidden block"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -43,28 +45,38 @@ export default function Nav({onSearch, logout}){
             />
           </svg>
        
-       <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
+       <div className="hidden w-full md:flex md:items-center md:w-auto" id="menu">
           <ul
-            class="
+            className="
               pt-4 
               text-base text-gray-700
               md:flex
               md:justify-between 
               md:pt-0"
           >
-            <li>
-              <button class="md:p-4 py-2 block hover:text-green-400" href="#"
-                onClick={()=> onSearch(getRandomInt(826))}>Random</button>
+            <li className="flex items-center">
+              <Link className="md:p-4 py-2 block hover:text-green-400 " to="/home">Home</Link>
             </li>
-            <li>
-              <button class="md:p-4 py-2 block hover:text-green-400" href="#"
-                onClick={() => logout()}>Log Out</button>
+
+            <li className="flex items-center">
+              <Link className="md:p-4 py-2 block hover:text-green-400 " to="/favorites">Favorites</Link>
             </li>
-            <li>
-              <Link class="md:p-4 py-2 block hover:text-green-400 " to="/about">About</Link>
+
+            <li className="flex items-center">
+              <Link className="md:p-4 py-2 block hover:text-green-400 " to="/about">About</Link>
             </li>
       
-            <li>
+            <li className="flex items-center">
+              <button className="md:p-4 py-2 block hover:text-green-400" 
+                onClick={()=> onSearch(getRandomInt(826))}>Random</button>
+            </li>
+
+            <li className="flex items-center">
+              <button className="md:p-4 py-2 block text-white rounded-2xl hover:text-red-400 bg-red-800"
+                onClick={() => logout()}>Log Out</button>
+            </li>
+
+            <li className="flex items-center">
               <SearchBar onSearch={onSearch}></SearchBar>
             </li>
           </ul>

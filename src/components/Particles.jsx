@@ -18,7 +18,7 @@ function ParticlesComponent(){
         
     }, []);
     return(
-        <div className="particles ">
+        <div className="fixed z-0">
             <Particles
                 id="tsparticles"
             init={particlesInit}
@@ -26,7 +26,7 @@ function ParticlesComponent(){
             options={{
                 background: {
                     color: {
-                        value: "#171A21",
+                        value: "#0f1219f9",
                     },
                 },
                 fpsLimit: 120,
@@ -54,13 +54,13 @@ function ParticlesComponent(){
                 },
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: "#192",
                     },
                     links: {
-                        color: "#ffffff",
+                        color: "#891",
                         distance: 150,
                         enable: true,
-                        opacity: 0.4,
+                        opacity: 0.6,
                         width: 1,
                     },
                     move: {

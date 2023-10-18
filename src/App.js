@@ -8,6 +8,7 @@ import Detail from './components/Detail'
 import NotFound from './components/404'
 import Form from './components/Form'
 import ParticlesComponent from './components/Particles'
+import Favorites from './components/Favorites'
 
 function App () {
   const [characters, setCharacters] = useState([])
@@ -37,9 +38,9 @@ function App () {
   }
  }
 
- function onClose(id){
-  setCharacters(characters.filter(char => char.id !== id))
- }
+  function onClose(id) {
+    setCharacters(characters.filter(char => char.id !== id))
+  }
 const location = useLocation();
 const navigate = useNavigate();
 const [access, setAccess] = useState(false);
@@ -67,7 +68,7 @@ useEffect(() => {
   return (<>
 
     <ParticlesComponent/>
-    <div className='App'>
+    <div className='App z-10 relative'>
     {location.pathname !=='/'  && <Nav onSearch = {onSearch} logout ={logout}/>}
       <hr />
       <div>
@@ -79,6 +80,9 @@ useEffect(() => {
       <Route path="/about" element={<About/>}></Route>
       <Route path='/detail/:detailId' element={<Detail/>}></Route>
        <Route path="/" element={<Form login={login}></Form>}></Route>
+       <Route path="/favorites" element={<Favorites
+       characters={characters}
+          onClose={onClose}></Favorites>}></Route>
        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       </div>

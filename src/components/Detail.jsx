@@ -7,6 +7,10 @@ export default function Detail(){
     const {detailId} = useParams()
     let [character,setCharacter] = useState({})
 
+    let statusc = ""
+    let symbol =""
+  
+
 useEffect(() => {
   fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
     .then((response) => response.json())
@@ -23,6 +27,17 @@ useEffect(() => {
   return setCharacter({});
 }, [detailId]);
 
+if(character.status == "Alive"){
+    statusc = "text-green-400 text-sm mb-8"
+    symbol = "fa-regular fa-heart"
+  }else if(character.status == "Dead") {
+    statusc = "text-red-400 text-sm mb-8"
+    symbol = "fa-solid fa-skull"
+  } else {
+    statusc = "text-yellow-400 text-sm mb-8"
+    symbol = "fa-solid fa-question"
+  }
+
     return(
         <div>
         <div class=" py-8">
@@ -37,7 +52,7 @@ useEffect(() => {
             <div className="">
 
                 <h2 class="text-2xl text-white font-bold mb-2">{character.name}</h2>
-                <p class="text-gray-400 text-sm mb-8">{character.status}</p>
+                <p class={statusc}>{character.status} <i class={symbol}></i></p>
                 <div class="flex justify-between mb-6">
                     <div class="mr-4 mx-2">
                         <span class="border border-pink-600 rounded-full px-4 text-sm text-pink-600 py-0.5">Gender</span>
