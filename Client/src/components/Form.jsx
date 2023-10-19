@@ -5,8 +5,12 @@ export default function Form({login}) {
     <>
     <div class="h-screen overflow-hidden flex items-center justify-center ">
   <div class="max-w-4xl flex  max-h-96 z-10 ">
-    <img src="https://i.etsystatic.com/32050623/r/il/b627a1/4447274366/il_fullxfull.4447274366_1o7q.jpg" alt="" class="hidden md:block w-1/2 max-h-full rounded-l-xl"/>
-    <div class="md:w-1/2 bg-white bg-opacity-50 py-14 px-12 rounded-r-xl">
+    <img src="https://i.etsystatic.com/32050623/r/il/b627a1/4447274366/il_fullxfull.4447274366_1o7q.jpg" alt="" class="hidden md:block w-1/2 max-h-full rounded-xl"/>
+    <div class="md:w-1/2 bg-green-800 bg-opacity-50 pt-6 px-12 rounded-xl">
+    <div className="flex justify-center">
+
+    <img className="w-44 " src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg"></img>
+    </div>
 
     <Formik
         initialValues={{
@@ -44,7 +48,7 @@ export default function Form({login}) {
           
           <form onSubmit={handleSubmit}>
             <div class="mb-4">
-              <label class="block mb-2 text-sm font-bold" htmlFor="email">Usuario</label>
+              <label class="block text-white mb-2 text-sm font-bold" htmlFor="email">Usuario</label>
               <input
               class="w-full p-3 text-md border rounded shadow focus:outline-none focus:shadow-outline"
                 type="text"
@@ -55,10 +59,10 @@ export default function Form({login}) {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.email && errors.email && <p className="text-red-800">{errors.email}</p>}
+              {touched.email && errors.email && <p className="text-red-400">{errors.email}</p>}
             </div>
             <div class="mb-4">
-              <label class="block mb-2 text-sm font-bold" htmlFor="Password">Password</label>
+              <label class="block text-white mb-2 text-sm font-bold" htmlFor="Password">Password</label>
               <input
               class="w-full p-3 text-md border rounded shadow focus:outline-none focus:shadow-outline"
                 type="text"
@@ -69,7 +73,7 @@ export default function Form({login}) {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.password && errors.password && <p className="text-red-800">{errors.password}</p>}
+              {touched.password && errors.password && <p className="text-red-400">{errors.password}</p>}
             </div>
             <div class="mb-4">
 
