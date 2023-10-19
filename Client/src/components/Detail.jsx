@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react"
 import { useParams } from "react-router-dom"
+import axios from "axios"
 import "./Detail.css"
 import { Link } from "react-router-dom"
 
@@ -11,21 +12,21 @@ export default function Detail(){
     let symbol =""
   
 
-useEffect(() => {
-  fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    .then((response) => response.json())
-    .then((char) => {
-      if (char.name) {
-        setCharacter(char);
-      } else {
-        window.alert("No hay personajes con ese ID");
-      }
-    })
-    .catch((err) => {
-      window.alert("No hay personajes con ese ID");
-    });
-  return setCharacter({});
-}, [detailId]);
+    useEffect(() => {
+      fetch(`http://localhost:3001/rickandmorty/character/${detailId}`)
+        .then((response) => response.json())
+        .then((char) => {
+          if (char.name) {
+            setCharacter(char);
+          } else {
+            window.alert("No hay personajes con ese ID");
+          }
+        })
+        .catch((err) => {
+          window.alert("No hay personajes con ese ID");
+        });
+      return setCharacter({});
+    }, [detailId]);
 
 if(character.status == "Alive"){
     statusc = "text-green-400 text-sm mb-8"

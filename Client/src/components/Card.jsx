@@ -52,8 +52,8 @@ import React, { useEffect, useState } from "react";
    return (
         <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 flex justify-center  ">
 
-<div class="group  before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl bg-slate-800 before:bg-gradient-to-bl from-yellow-600 via-green-600 to-green-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-50 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
-<div class="flex justify-end w-full ">
+<div class="group   before:hover:scale-95 before:hover:h-72 before:hover:w-80 before:hover:h-44 before:hover:rounded-b-2xl before:transition-all before:duration-500 before:content-[''] before:w-80 before:h-24 before:rounded-t-2xl bg-slate-800 before:bg-gradient-to-bl from-yellow-600 via-green-600 to-green-700 before:absolute before:top-0 w-80 h-72 relative bg-slate-800 flex flex-col items-center justify-center gap-2 text-center rounded-2xl overflow-hidden">
+<div class="flex justify-end w-full  ">
 
                             <a onClick={handleFavorite} class=" pe-10 cursor-pointer z-10 h-6 w-6 text-black fill-current">
                             <i class={favoriteH}></i>

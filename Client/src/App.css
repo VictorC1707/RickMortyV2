@@ -1,3 +1,14 @@
+
 .App {
    text-align: center;
+}
+
+.swal2-popup{
+   background-color: #208D45;
+   color: #F0F2EB;
+}
+
+.swal2-confirm button{
+   background-color: #A7CB54;
+
 }
