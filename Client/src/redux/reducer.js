@@ -8,16 +8,9 @@ const initialState = {
 const reducer = (state=initialState,action) =>{
     switch(action.type){
         case ADD_FAVORITE:
-            return{
-              ...state,
-                myFavorites: [...state.myFavorites, action.payload],
-                allCharacters: [...state.allCharacters, action.payload]
-            }
+            return { ...state, myFavorites: payload, allCharacters: payload }
         case REMOVE_FAVORITE:
-            return{
-              ...state,
-                myFavorites: state.myFavorites.filter(favorite => favorite.id!== action.payload)
-            }
+            return { ...state, myFavorites: payload };
         
         case FILTER:
             let copyAllCharactersFilter = [...state.allCharacters]
