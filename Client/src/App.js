@@ -10,6 +10,7 @@ import Form from './components/Form'
 import ParticlesComponent from './components/Particles'
 import Favorites from './components/Favorites'
 import Swal from "sweetalert2"
+import axios from "axios"
 
 function App () {
   const [characters, setCharacters] = useState([])
@@ -94,23 +95,22 @@ function logout() {
 
 function login(userData) {
    
-   
-}
-function login(userData) {
-   if (userData.password === password && userData.email === email) {
     sucessLogin()
     const { email, password } = userData;
     const URL = 'http://localhost:3001/rickandmorty/login/';
     axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
        const { access } = data;
+       if (access == true) {
        setAccess(data);
        access && navigate('/home');
+      }else{
+        errorLogin()
+      }
+   
       });
-   }else{
-
-     errorLogin()
-   }
-}
+  
+    }
+    
 
 useEffect(() => {
    !access && navigate('/');

@@ -1,9 +1,9 @@
+import axios from "axios"
 export const ADD_FAVORITE = "ADD_FAVORITE"
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE"
 export const ORDER = "ORDER"
 export const FILTER = "FILTER"
 export const RESET_FILTERS ="RESET_FILTERS"
-import axios from "axios"
 
 export function addFavorite(character) {
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
